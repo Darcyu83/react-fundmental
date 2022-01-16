@@ -28,6 +28,25 @@
 
 ## useMomo
 
-usage : useMemo(func , [variables]);
+usage :
+useMemo(func , [variables]);
 
-##
+## useReducer
+
+usage :
+const [state, dispatch] = useReducer(reducer, initialState)
+
+const state = {value : 0 }
+const action = {type: 'INCREMENT' , payload : 0};
+
+function reducer(state, action){
+switch(action.type){
+
+case "INCREMENT" :
+return {value : state.value + 1}
+
+}
+return nextState;
+}
+
+dispatch(action) to invoke reducer

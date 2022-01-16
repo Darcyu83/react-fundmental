@@ -169,4 +169,4 @@ function UserList() {
   );
 }
 
-export default UserList;
+export default React.memo(UserList);

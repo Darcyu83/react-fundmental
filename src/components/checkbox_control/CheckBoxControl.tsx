@@ -41,7 +41,7 @@ function CheckBoxControl() {
       <Div>
         <input
           type="checkbox"
-          onClick={onToggleAciveAll}
+          onChange={onToggleAciveAll}
           checked={checkedAll}
         />
       </Div>

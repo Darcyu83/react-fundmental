@@ -11,10 +11,16 @@ function UpperMostMenu() {
         Input values Control
       </Link>
       <Link className={styles.link} to="/renderarr">
-        Render data in an array
+        User List
+      </Link>
+      <Link className={styles.link} to="/userlistreducer">
+        User List w/useReducer
       </Link>
       <Link className={styles.link} to="/checkbox">
         Checkbox Control
+      </Link>
+      <Link className={styles.link} to="/counter">
+        Counter w/useReducer
       </Link>
     </div>
   );
