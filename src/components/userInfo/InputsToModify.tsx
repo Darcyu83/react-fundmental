@@ -50,7 +50,6 @@ function InputsToModify({ user, onModify, changeModeToMod }: IProps) {
       [name]: value,
     }));
   };
-  console.log("inputValues.email", inputValues.email);
   const onReset = () => {
     if (window.confirm("초기화 하시겠습니까?")) {
       setInputValues({

@@ -1,5 +1,7 @@
 # React Inputs and each Values Control.
 
+## Control states in a way by keeping immutable principles.
+
 1. Create / register new item : return []
 
    setDataCreated(
@@ -23,3 +25,9 @@
    setDataUpdated(currState =>
    currState.filter(itm => itm.id !== id)
    )
+
+## useMomo
+
+usage : useMemo(func , [variables]);
+
+##

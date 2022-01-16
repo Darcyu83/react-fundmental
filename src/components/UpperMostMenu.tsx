@@ -13,6 +13,9 @@ function UpperMostMenu() {
       <Link className={styles.link} to="/renderarr">
         Render data in an array
       </Link>
+      <Link className={styles.link} to="/checkbox">
+        Checkbox Control
+      </Link>
     </div>
   );
 }

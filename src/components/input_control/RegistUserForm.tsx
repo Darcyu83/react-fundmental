@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { IUserInputInfo } from "../user_register/UserList";
+import { IUserInputInfo } from "../userInfo/UserList";
 
 const Div = styled.div`
   padding: 10px;

@@ -4,8 +4,9 @@ import styled from "styled-components";
 import InputsToModify from "./InputsToModify";
 import { IUserInputInfo } from "./UserList";
 
-const Div = styled.div`
+const Div = styled.div<{ active?: boolean }>`
   padding: 10px;
+  color: ${(props) => (props.active ? "tomato" : "inherit")};
 `;
 const Button = styled.button`
     color: crimson;
@@ -17,6 +18,7 @@ export interface IUser {
   id: number;
   username: string;
   email: string;
+  active: boolean;
 }
 
 interface IProps {
@@ -29,10 +31,10 @@ interface IProps {
     onReset: () => void,
     changeModeToMod?: () => void
   ) => void;
+  onToggleOnActive: (id: number) => void;
 }
-function User({ user, listNo, onDelete, onModify }: IProps) {
+function User({ user, listNo, onDelete, onModify, onToggleOnActive }: IProps) {
   const [toggleMode, setToggleMode] = useState(false);
-
   const changeModeToMod = () => {
     setToggleMode((curr) => !curr);
   };
@@ -47,9 +49,16 @@ function User({ user, listNo, onDelete, onModify }: IProps) {
         />
       ) : (
         <>
-          <Div>No : {listNo}</Div>
-          <Div>Name : {user.username}</Div>
-          <Div>Email : {user.email} </Div>
+          <div>
+            <input
+              type="checkbox"
+              onChange={() => onToggleOnActive(user.id)}
+              checked={user.active}
+            />
+            <Div active={user.active}>No : {listNo}</Div>
+            <Div>Name : {user.username}</Div>
+            <Div>Email : {user.email} </Div>
+          </div>
           <Button onClick={() => onDelete(user.id)}>Del</Button>
           <Button onClick={changeModeToMod}>Modify</Button>
         </>
