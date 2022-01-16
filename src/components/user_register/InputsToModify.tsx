@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { IUserInputInfo } from "./RenderArray";
 import User, { IUser } from "./User";
+import { IUserInputInfo } from "./UserList";
 
 const Div = styled.div`
   padding: 10px;
@@ -30,8 +30,8 @@ const InputsInitialState = {
 interface IProps {
   user: IUser;
   onModify?: (
-    user: IUserInputInfo,
-    id: number,
+    userInputInfo: IUserInputInfo,
+    user: IUser,
     onReset: () => void,
     changeModeToMod?: () => void
   ) => void;
@@ -64,7 +64,6 @@ function InputsToModify({ user, onModify, changeModeToMod }: IProps) {
     setInputValues({
       ...InputsInitialState,
     });
-
     firstNmRef.current?.focus();
   };
   return (
@@ -97,7 +96,6 @@ function InputsToModify({ user, onModify, changeModeToMod }: IProps) {
           onChange={onChange}
         />
       </Div>
-      <Div></Div>
       <hr />
       <Div>
         <span>Your Name: </span> {lastNm} {firstNm}
@@ -109,12 +107,7 @@ function InputsToModify({ user, onModify, changeModeToMod }: IProps) {
         <Div>
           <Button
             onClick={() =>
-              onModify(
-                inputValues,
-                user.id,
-                onResetWithoutAsking,
-                changeModeToMod
-              )
+              onModify(inputValues, user, onResetWithoutAsking, changeModeToMod)
             }
           >
             modify

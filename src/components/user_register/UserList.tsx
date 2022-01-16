@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
-import Inputs from "./Inputs";
-import UserList from "./UserList";
+import RegistUserForm from "../input_control/RegistUserForm";
+import User, { IUser } from "./User";
 
 const Div = styled.div`
   padding: 10px;
@@ -33,7 +33,7 @@ export interface IUserInputInfo {
   lastNm: string;
   email: string;
 }
-function RenderArray() {
+function UserList() {
   const [userStates, setUserStates] = useState(users);
   const nextId = useRef<number>(new Date().getTime());
 
@@ -52,25 +52,39 @@ function RenderArray() {
   };
 
   const onModify = (
-    user: IUserInputInfo,
-    id: number,
+    userInputInfo: IUserInputInfo,
+    user: IUser,
     onReset: () => void,
     changeModeToMod?: () => void
   ) => {
-    if (!(user.firstNm && user.lastNm && user.email)) {
-      if (window.confirm("미입력된 값이 있습니다. 입력을 취소하시겠습니까?")) {
-        if (changeModeToMod) changeModeToMod();
-        onReset();
-        return;
-      }
+    // if (
+    //   !(userInputInfo.firstNm && userInputInfo.lastNm && userInputInfo.email)
+    // ) {
+    if (!window.confirm("변경된 내용을 적용하시겠습니까?")) {
+      if (changeModeToMod) changeModeToMod();
+      onReset();
       return;
     }
-    const username = user.lastNm + " " + user.firstNm;
-    const email = user.email;
+    //}
+
+    const lastNm = userInputInfo.lastNm
+      ? userInputInfo.lastNm
+      : user.username.split(" ")[0] === undefined
+      ? ""
+      : user.username.split(" ")[0];
+    const firstNm = userInputInfo.firstNm
+      ? userInputInfo.firstNm
+      : user.username.split(" ")[1] === undefined
+      ? ""
+      : user.username.split(" ")[1];
+
+    const username = `${lastNm} ${firstNm}`;
+
+    const email = userInputInfo.email ? userInputInfo.email : user.email;
 
     setUserStates((currState) =>
       currState.map((currUser) =>
-        currUser.id === id
+        currUser.id === user.id
           ? {
               ...currUser,
               username,
@@ -91,15 +105,25 @@ function RenderArray() {
   console.log(userStates);
   return (
     <Div>
-      {/* <Div>
-        users Data : <Div>{JSON.stringify(userStates)}</Div>
-      </Div> */}
+      <RegistUserForm onCreate={onCreate} />
+      <Div>{JSON.stringify(userStates)}</Div>
       <Div>
-        <Inputs onCreate={onCreate} />
+        <b>User List</b>
       </Div>
-      <UserList users={userStates} onDelete={onDelete} onModify={onModify} />
+      <hr />
+      <Div>
+        {userStates.map((user, idx) => (
+          <User
+            key={user.id}
+            listNo={idx + 1}
+            user={user}
+            onDelete={onDelete}
+            onModify={onModify}
+          />
+        ))}
+      </Div>
     </Div>
   );
 }
 
-export default RenderArray;
+export default UserList;

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { IUserInputInfo } from "./RenderArray";
+import { IUserInputInfo } from "../user_register/UserList";
 
 const Div = styled.div`
   padding: 10px;
@@ -21,7 +21,7 @@ interface IProps {
   onModify?: (user: IUserInputInfo, id: number) => void;
 }
 
-function Inputs({ onCreate, onModify }: IProps) {
+function RegistUserForm({ onCreate, onModify }: IProps) {
   const firstNmRef = useRef<HTMLInputElement>(null);
   const [inputValues, setInputValues] = useState(InputsInitialState);
   const { firstNm, lastNm, email } = inputValues;
@@ -90,4 +90,4 @@ function Inputs({ onCreate, onModify }: IProps) {
   );
 }
 
-export default Inputs;
+export default RegistUserForm;

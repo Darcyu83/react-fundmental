@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Inputs from "./Inputs";
+
 import InputsToModify from "./InputsToModify";
-import { IUserInputInfo } from "./RenderArray";
+import { IUserInputInfo } from "./UserList";
 
 const Div = styled.div`
   padding: 10px;
@@ -24,8 +24,8 @@ interface IProps {
   user: IUser;
   onDelete: (id: number) => void;
   onModify: (
-    user: IUserInputInfo,
-    id: number,
+    userInputInfo: IUserInputInfo,
+    user: IUser,
     onReset: () => void,
     changeModeToMod?: () => void
   ) => void;
@@ -36,6 +36,7 @@ function User({ user, listNo, onDelete, onModify }: IProps) {
   const changeModeToMod = () => {
     setToggleMode((curr) => !curr);
   };
+
   return (
     <Div>
       {toggleMode ? (
