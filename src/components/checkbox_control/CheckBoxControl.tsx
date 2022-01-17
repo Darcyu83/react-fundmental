@@ -49,7 +49,7 @@ function CheckBoxControl() {
         <Div key={idx}>
           <input
             type="checkbox"
-            onClick={() => onToggleActive(item.id)}
+            onChange={() => onToggleActive(item.id)}
             checked={item.active}
           />
           <b>ID : {item.id}</b>
