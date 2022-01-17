@@ -1,4 +1,4 @@
-import { T_InputValues, T_State, T_User } from "./../components/global_state";
+import { T_InputValues, T_State, T_User } from "../components/gl_reducer_state";
 
 export const CREATE_USER = "userlist/create" as const;
 export const DELELTE_USER = "userlist/delete" as const;

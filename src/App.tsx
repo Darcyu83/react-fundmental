@@ -5,6 +5,9 @@ import Counter from "./components/counter_reducer/Counter";
 import Input_useInputsHook from "./components/input_control/Input_useInputsHook";
 import RegistUserForm from "./components/input_control/RegistUserForm";
 import PracticeComp from "./components/PracticeComp";
+import A_TodoHome from "./components/todo_context/A_TodoHome";
+import TodoHome from "./components/todo_context/TodoHome";
+import TodoList from "./components/todo_context/TodoList";
 import UpperMostMenu from "./components/UpperMostMenu";
 import UserList from "./components/userInfo/UserList";
 import UserListReducer from "./components/userInfo_reducer/UserList";
@@ -19,10 +22,12 @@ function App() {
         <Route path="/" element={<PracticeComp />} />
         <Route path="/inputs" element={<RegistUserForm />} />
         <Route path="/useinputs" element={<Input_useInputsHook />} />
-        <Route path="/renderarr" element={<UserList />} />
+        <Route path="/userlist" element={<UserList />} />
+        ss
         <Route path="/userlistreducer" element={<UserListReducer />} />
         <Route path="/checkbox" element={<CheckBoxControl />} />
         <Route path="/counter" element={<Counter />} />
+        <Route path="/todolist" element={<A_TodoHome />} />
       </Routes>
     </BrowserRouter>
   );

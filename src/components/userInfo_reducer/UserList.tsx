@@ -12,7 +12,7 @@ import {
   T_InputValues,
   T_State,
   T_Users,
-} from "../global_state";
+} from "../gl_reducer_state";
 import RegistUserForm from "../input_control/RegistUserForm";
 import RegistUserForm_useReducer from "../input_control/RegistUserForm_useReducer";
 import User from "./User";

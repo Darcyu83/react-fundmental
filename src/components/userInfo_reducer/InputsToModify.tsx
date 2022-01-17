@@ -1,5 +1,6 @@
+import { useRef, useState } from "react";
 import styled from "styled-components";
-import { T_InputValues, T_User } from "../global_state";
+import { T_InputValues, T_User } from "../gl_reducer_state";
 import { IUser } from "./User";
 
 const Div = styled.div`
@@ -28,45 +29,45 @@ const InputsInitialState = {
 
 interface IProps {
   user: T_User;
-  onModify?: (
+  onModify: (
     userInputInfo: T_InputValues,
     user: IUser,
     onReset: () => void,
     changeModeToMod?: () => void
   ) => void;
-  changeModeToMod?: () => void;
+  changeModeToMod: () => void;
 }
 
 function InputsToModify({ user, onModify, changeModeToMod }: IProps) {
-  // const firstNmRef = useRef<HTMLInputElement>(null);
-  // const [inputValues, setInputValues] = useState(InputsInitialState);
-  // const { firstNm, lastNm, email } = inputValues;
+  const firstNmRef = useRef<HTMLInputElement>(null);
+  const [inputValues, setInputValues] = useState(InputsInitialState);
+  const { firstNm, lastNm, email } = inputValues;
 
-  // const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-  //   const { value, name } = e.currentTarget;
-  //   setInputValues((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
-  // const onReset = () => {
-  //   if (window.confirm("초기화 하시겠습니까?")) {
-  //     setInputValues({
-  //       ...InputsInitialState,
-  //     });
-  //   }
-  //   firstNmRef.current?.focus();
-  // };
+  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const { value, name } = e.currentTarget;
+    setInputValues((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  const onReset = () => {
+    if (window.confirm("초기화 하시겠습니까?")) {
+      setInputValues({
+        ...InputsInitialState,
+      });
+    }
+    firstNmRef.current?.focus();
+  };
 
-  // const onResetWithoutAsking = () => {
-  //   setInputValues({
-  //     ...InputsInitialState,
-  //   });
-  //   firstNmRef.current?.focus();
-  // };
+  const onResetWithoutAsking = () => {
+    setInputValues({
+      ...InputsInitialState,
+    });
+    firstNmRef.current?.focus();
+  };
   return (
     <Div style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
-      {/* <Div>
+      <Div>
         <span>First Name: </span>
         <Input
           ref={firstNmRef}
@@ -111,7 +112,7 @@ function InputsToModify({ user, onModify, changeModeToMod }: IProps) {
             modify
           </Button>
         </Div>
-      )} */}
+      )}
     </Div>
   );
 }

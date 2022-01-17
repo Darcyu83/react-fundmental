@@ -1,29 +1,94 @@
+import { useMatch } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "../modules/upperMostMenu.module.css";
 
 function UpperMostMenu() {
+  const homeMatched = useMatch("/");
+  const inputCtrlMatched = useMatch("/inputs");
+  const hookMatched = useMatch("/useinputs");
+  const userlistMatched = useMatch("/userlist");
+  const userlistRdcMatched = useMatch("/userlistreducer");
+  const checkboxMatched = useMatch("/checkbox");
+  const conterMatched = useMatch("/counter");
+  const todoMatched = useMatch("/todolist");
+
   return (
     <div className={styles.navBar}>
-      <Link className={styles.link} to="/">
+      <Link
+        className={`${
+          homeMatched ? `${styles.link} ${styles.active}` : `${styles.link}`
+        }
+        `}
+        to="/"
+      >
         Home
       </Link>
-      <Link className={styles.link} to="/inputs">
+      <Link
+        className={`${
+          inputCtrlMatched
+            ? `${styles.link} ${styles.active}`
+            : `${styles.link}`
+        }
+        `}
+        to="/inputs"
+      >
         Input values Control
       </Link>
-      <Link className={styles.link} to="/useinputs">
-        useInputs
+      <Link
+        className={`${
+          hookMatched ? `${styles.link} ${styles.active}` : `${styles.link}`
+        }
+        `}
+        to="/useinputs"
+      >
+        useInputs Hook customized
       </Link>
-      <Link className={styles.link} to="/renderarr">
+      <Link
+        className={`${
+          userlistMatched ? `${styles.link} ${styles.active}` : `${styles.link}`
+        }
+        `}
+        to="/userlist"
+      >
         User List
       </Link>
-      <Link className={styles.link} to="/userlistreducer">
+      <Link
+        className={`${
+          userlistRdcMatched
+            ? `${styles.link} ${styles.active}`
+            : `${styles.link}`
+        }
+        `}
+        to="/userlistreducer"
+      >
         User List w/useReducer
       </Link>
-      <Link className={styles.link} to="/checkbox">
+      <Link
+        className={`${
+          checkboxMatched ? `${styles.link} ${styles.active}` : `${styles.link}`
+        }
+        `}
+        to="/checkbox"
+      >
         Checkbox Control
       </Link>
-      <Link className={styles.link} to="/counter">
+      <Link
+        className={`${
+          conterMatched ? `${styles.link} ${styles.active}` : `${styles.link}`
+        }
+        `}
+        to="/counter"
+      >
         Counter w/useReducer
+      </Link>
+      <Link
+        className={`${
+          todoMatched ? `${styles.link} ${styles.active}` : `${styles.link}`
+        }
+        `}
+        to="/todolist"
+      >
+        Todo List w/Context API
       </Link>
     </div>
   );

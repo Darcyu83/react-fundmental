@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { T_InputValues } from "../global_state";
+import { T_InputValues } from "../gl_reducer_state";
 
 import InputsToModify from "./InputsToModify";
 
@@ -50,17 +50,11 @@ function User({ user, listNo, onDelete, onModify, onToggleOnActive }: IProps) {
       ) : (
         <>
           <div>
-            <input
-              type="checkbox"
-              onChange={() => onToggleOnActive(user.id)}
-              checked={user.active}
-            />
             <Div active={user.active}>No : {listNo}</Div>
             <Div>Name : {user.username}</Div>
             <Div>Email : {user.email} </Div>
           </div>
           <Button onClick={() => onDelete(user.id)}>Del</Button>
-          <Button onClick={changeModeToMod}>Modify</Button>
         </>
       )}
       <hr></hr>

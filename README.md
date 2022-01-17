@@ -50,3 +50,32 @@ return nextState;
 }
 
 dispatch(action) to invoke reducer
+
+## Make a hook , useInputs
+
+## Context API
+
+0. structure of data : [ {}, {} , {} ]
+
+1. create a state of users
+
+type T_User = {
+id: number;
+username : string;
+email : string;
+}
+
+type T_Users = T_User[];
+
+export const UserStateContext = createContext<T_Users | undefined>(undefined);
+
+2. create a state of user dispatch
+
+type T_Action =
+{ type : "CREACT_USER" , user: T_User},
+{ type : "DELETE_USER" , id: number},
+{ type : "MODIFY_USER" , user: T_User},
+}
+
+type T_UserDispatch = Dispatch<T_Action>;
+const UserDispatchContext = createContext<T_UserDispatch | undefined>(undefined);

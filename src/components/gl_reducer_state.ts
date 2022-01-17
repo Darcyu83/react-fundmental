@@ -33,8 +33,3 @@ export type T_User = ReturnType<typeof returnUser>;
 
 const returnInputValues = () => ininitalState.inputValues;
 export type T_InputValues = ReturnType<typeof returnInputValues>;
-
-export type T_Action =
-  | { type: "userlist/create"; user: T_User }
-  | { type: "userlist/modify" }
-  | { type: "userlist/delete"; payload: number };

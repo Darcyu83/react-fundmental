@@ -1,4 +1,4 @@
-import { T_InputValues } from "./../components/global_state";
+import { T_InputValues } from "../components/gl_reducer_state";
 import { useCallback, useState } from "react";
 
 export function useInputs(

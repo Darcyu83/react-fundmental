@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { T_InputValues } from "../global_state";
+import { T_InputValues } from "../gl_reducer_state";
 import { IUserInputInfo } from "../userInfo/UserList";
 
 const Div = styled.div`

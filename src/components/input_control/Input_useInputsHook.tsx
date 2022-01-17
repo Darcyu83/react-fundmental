@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { useInputs } from "../../hooks/useInputs";
+import { useInputs } from "../../hooks_customized/useInputs";
 import { IUserInputInfo } from "../userInfo/UserList";
 
 const Div = styled.div`
