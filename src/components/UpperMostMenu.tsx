@@ -10,6 +10,9 @@ function UpperMostMenu() {
       <Link className={styles.link} to="/inputs">
         Input values Control
       </Link>
+      <Link className={styles.link} to="/useinputs">
+        useInputs
+      </Link>
       <Link className={styles.link} to="/renderarr">
         User List
       </Link>
