@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { A_T_Todo, TodosDispatchContext } from "../../contexts/A_TodosContext";
+import { A_T_Todo } from "../../contexts/A_TodosContext";
+import { TodosDispatchContext } from "../../contexts/B_TodosContext";
 import "./TodoItem.css";
 const Div = styled.div`
   padding: 10px;

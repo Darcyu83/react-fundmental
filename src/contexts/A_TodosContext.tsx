@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import { createContext, Dispatch, ReactNode, useReducer } from "react";
 
 export type A_T_Todo = {
   id: number;
@@ -26,7 +26,7 @@ type A_T_Action =
   | { type: "TOGGLE"; id: number };
 
 export const TodosDispatchContext = createContext<
-  React.Dispatch<A_T_Action> | undefined
+  Dispatch<A_T_Action> | undefined
 >(undefined);
 
 //reducer
@@ -47,11 +47,7 @@ function todosReducer(state: A_T_Todos, action: A_T_Action) {
 }
 
 //useReducer + context
-export function TodosContextProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function TodosContextProvider({ children }: { children: ReactNode }) {
   const [todos, dispatch] = useReducer(todosReducer, [
     {
       id: 1,
