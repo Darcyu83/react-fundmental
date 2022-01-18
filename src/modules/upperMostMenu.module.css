@@ -4,26 +4,28 @@
   min-width: fit-content;
 }
 
-/* .link::before {
-  content: "1";
-  color: transparent;
+.link::before {
+  content: '1';
+  /* color: transparent; */
   max-width: 2px !important;
   min-height: 1rem;
-  background-color: rgb(145, 121, 252);
+  background-color: white;
   margin: 2px;
   margin-right: 5px;
-} */
+  display: inline-flex;
+  overflow: hidden;
+}
 
 .active {
-  color: rgb(78, 243, 142);
+  color: rgb(168, 167, 236);
   font-weight: bold;
   margin: 5px;
   min-width: fit-content;
 }
 .active::before {
-  content: "1";
+  content: '1';
   color: transparent;
-  max-width: 2px !important;
+  min-width: 5px !important;
   min-height: 1rem;
   background-color: rgb(185, 9, 255);
   margin: 2px;

@@ -1,0 +1,77 @@
+$blue: #76b7f0;
+$gray: gray;
+$pink: pink;
+
+@mixin button-color($color) {
+  background: $color;
+  &:hover {
+    background: lighten($color, 10%);
+  }
+
+  &:active {
+    background: darken($color, 10%);
+  }
+
+  &.outline {
+    color: $color;
+    background: none;
+    border: 1px solid $color;
+    &:hover {
+      background: $color;
+      color: white;
+    }
+  }
+}
+.button {
+  background: $blue;
+  border-radius: 3px;
+  border: none;
+  height: auto;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+
+  &:hover {
+    background: lighten($blue, 10%);
+  }
+
+  &:active {
+    background: darken($blue, 10%);
+  }
+
+  &.large {
+    font-size: 1.25rem;
+  }
+
+  &.small {
+    font-size: 0.85rem;
+  }
+
+  &.blue {
+    @include button-color($blue);
+  }
+
+  &.gray {
+    @include button-color($gray);
+  }
+
+  &.pink {
+    @include button-color($pink);
+  }
+
+  & + & {
+    margin-left: 1rem;
+  }
+
+  &.fullWidth {
+    width: 100%;
+    justify-content: center;
+    & + & {
+      margin: 0;
+      margin-top: 0.5rem;
+    }
+  }
+}

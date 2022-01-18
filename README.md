@@ -1,4 +1,4 @@
-# React Inputs and each Values Control.
+# React fundmental tutorial
 
 ## Control states in a way by keeping immutable principles.
 

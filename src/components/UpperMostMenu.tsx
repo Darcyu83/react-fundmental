@@ -1,16 +1,17 @@
-import { useMatch } from "react-router-dom";
-import { Link } from "react-router-dom";
-import styles from "../modules/upperMostMenu.module.css";
+import { useMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import styles from '../modules/upperMostMenu.module.css';
 
 function UpperMostMenu() {
-  const homeMatched = useMatch("/");
-  const inputCtrlMatched = useMatch("/inputs");
-  const hookMatched = useMatch("/useinputs");
-  const userlistMatched = useMatch("/userlist");
-  const userlistRdcMatched = useMatch("/userlistreducer");
-  const checkboxMatched = useMatch("/checkbox");
-  const conterMatched = useMatch("/counter");
-  const todoMatched = useMatch("/todolist");
+  const homeMatched = useMatch('/');
+  const inputCtrlMatched = useMatch('/inputs');
+  const hookMatched = useMatch('/useinputs');
+  const userlistMatched = useMatch('/userlist');
+  const userlistRdcMatched = useMatch('/userlistreducer');
+  const checkboxMatched = useMatch('/checkbox');
+  const conterMatched = useMatch('/counter');
+  const todoMatched = useMatch('/todolist');
+  const cssMatched = useMatch('/css');
 
   return (
     <div className={styles.navBar}>
@@ -89,6 +90,15 @@ function UpperMostMenu() {
         to="/todolist"
       >
         Todo List w/Context API
+      </Link>
+      <Link
+        className={`${
+          cssMatched ? `${styles.link} ${styles.active}` : `${styles.link}`
+        }
+        `}
+        to="/css"
+      >
+        CSS Study
       </Link>
     </div>
   );
