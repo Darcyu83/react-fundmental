@@ -1,5 +1,5 @@
-import { createContext, Dispatch, ReactNode, useReducer } from "react";
-import produce from "immer";
+import { createContext, Dispatch, ReactNode, useReducer } from 'react';
+import produce from 'immer';
 
 //1. set state context
 
@@ -18,9 +18,9 @@ export const TodosStateContext = createContext<T_B_Todos | undefined>(
 //2. set dispatch context
 //make dispatch actions
 //define actions
-const CREATE_TODO = "CREATE" as const;
-const REMOVE_TODO = "REMOVE" as const;
-const TOGGLE_TODO = "TOGGLE" as const;
+const CREATE_TODO = 'CREATE' as const;
+const REMOVE_TODO = 'REMOVE' as const;
+const TOGGLE_TODO = 'TOGGLE' as const;
 
 //define action creators
 const createTodo = (text: string) => ({ type: CREATE_TODO, text });
@@ -88,17 +88,17 @@ export function TodosContextProvider({ children }: { children: ReactNode }) {
   const [todos, dispatch] = useReducer(todosReducer_Immer, [
     {
       id: 1,
-      text: "Context API 배우기",
+      text: 'Context API 배우기',
       done: true,
     },
     {
       id: 2,
-      text: "TypeScript 배우기",
+      text: 'TypeScript 배우기',
       done: true,
     },
     {
       id: 3,
-      text: "TypeScript 와 Context API 함께 사용하기",
+      text: 'TypeScript 와 Context API 함께 사용하기',
       done: false,
     },
   ]);

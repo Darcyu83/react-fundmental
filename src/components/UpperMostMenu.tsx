@@ -12,6 +12,7 @@ function UpperMostMenu() {
   const conterMatched = useMatch('/counter');
   const todoMatched = useMatch('/todolist');
   const cssMatched = useMatch('/css');
+  const reduxMatched = useMatch('/redux');
 
   return (
     <div className={styles.navBar}>
@@ -99,6 +100,15 @@ function UpperMostMenu() {
         to="/css"
       >
         CSS Study
+      </Link>
+      <Link
+        className={`${
+          reduxMatched ? `${styles.link} ${styles.active}` : `${styles.link}`
+        }
+        `}
+        to="/redux"
+      >
+        Redux Study
       </Link>
     </div>
   );

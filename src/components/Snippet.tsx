@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { HiOutlineCursorClick } from 'react-icons/hi';
 
-const Div = styled.div`
+export const DivPadding10 = styled.div`
   padding: 10px;
 `;
 
@@ -13,16 +14,25 @@ const Title = styled.h1`
 const SubTitle = styled.h1`
   font-weight: bold;
   font-size: 1.5rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 `;
 
 const Anchor = styled.span`
   color: blue;
+  margin-right: 5px;
 `;
 
+const FlexBoxCenter = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const Test = styled.div`
+  display: flex;
+`;
 function Snippet() {
   return (
-    <Div>
+    <DivPadding10>
       <Title>React fundmental</Title>
       <hr />
       <b>Author : Darcy Daeseok Yu</b>
@@ -32,12 +42,30 @@ function Snippet() {
           <Anchor> this tutorial</Anchor>
         </a>
       </p>
+      <SubTitle>What I've learn with this PJT</SubTitle>
 
-      <SubTitle>What I've learn</SubTitle>
       <a href=" https://github.com/Darcyu83/react-study-2">
-        <Anchor>Check this</Anchor>
+        <FlexBoxCenter>
+          <Anchor>Check this</Anchor>
+          <HiOutlineCursorClick />
+        </FlexBoxCenter>
       </a>
-    </Div>
+
+      <SubTitle>Other Project</SubTitle>
+      <a href=" https://darcyu83.github.io/react-personal-pjt">
+        <FlexBoxCenter>
+          <Anchor> https://darcyu83.github.io/react-personal-pjt</Anchor>{' '}
+          <HiOutlineCursorClick />
+        </FlexBoxCenter>
+      </a>
+
+      <Test>
+        <div>
+          long Text long Text long Text long Text long Text long Text long Text
+          long Text long Text long Text long Text{' '}
+        </div>
+      </Test>
+    </DivPadding10>
   );
 }
 
