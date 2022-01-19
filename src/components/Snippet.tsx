@@ -39,14 +39,14 @@ function Snippet() {
       <p>
         Based on
         <a href="https://react.vlpt.us/basic/">
-          <Anchor> this tutorial</Anchor>
+          <Anchor> this tutorial</Anchor> <HiOutlineCursorClick />
         </a>
       </p>
       <SubTitle>What I've learn with this PJT</SubTitle>
 
       <a href=" https://github.com/Darcyu83/react-study-2">
         <FlexBoxCenter>
-          <Anchor>Check this</Anchor>
+          <Anchor>Go to check</Anchor>
           <HiOutlineCursorClick />
         </FlexBoxCenter>
       </a>
@@ -58,13 +58,6 @@ function Snippet() {
           <HiOutlineCursorClick />
         </FlexBoxCenter>
       </a>
-
-      <Test>
-        <div>
-          long Text long Text long Text long Text long Text long Text long Text
-          long Text long Text long Text long Text{' '}
-        </div>
-      </Test>
     </DivPadding10>
   );
 }
