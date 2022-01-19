@@ -4,6 +4,7 @@ import TodosContainer from '../../containers/TodosContainer';
 
 const Div = styled.div`
   padding: 10px;
+  min-width: 450px;
 `;
 
 const Hr = styled.div`
