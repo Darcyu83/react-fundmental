@@ -11,6 +11,8 @@ import A_TodoHome from './components/todo_context/A_TodoHome';
 import UpperMostMenu from './components/UpperMostMenu';
 import UserList from './components/userInfo/UserList';
 import UserListReducer from './components/userInfo_reducer/UserList';
+import CounterContainerConnect from './containers/CounterContainerConnect';
+import MovieContainer from './containers/MovieContainer';
 import './modules/reset.module.css';
 
 function App() {
@@ -23,13 +25,14 @@ function App() {
         <Route path="/inputs" element={<RegistUserForm />} />
         <Route path="/useinputs" element={<Input_useInputsHook />} />
         <Route path="/userlist" element={<UserList />} />
-        ss
         <Route path="/userlistreducer" element={<UserListReducer />} />
         <Route path="/checkbox" element={<CheckBoxControl />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/todolist" element={<A_TodoHome />} />
         <Route path="/css" element={<CssHome />} />
         <Route path="/redux" element={<ReduxHome />} />
+        <Route path="/reduxconnect" element={<CounterContainerConnect />} />
+        <Route path="/movielist" element={<MovieContainer />} />
       </Routes>
     </BrowserRouter>
   );

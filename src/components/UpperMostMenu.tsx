@@ -13,6 +13,8 @@ function UpperMostMenu() {
   const todoMatched = useMatch('/todolist');
   const cssMatched = useMatch('/css');
   const reduxMatched = useMatch('/redux');
+  const reduxConnectMatched = useMatch('/reduxconnect');
+  const moviesMatched = useMatch('/movielist');
 
   return (
     <div className={styles.navBar}>
@@ -109,6 +111,26 @@ function UpperMostMenu() {
         to="/redux"
       >
         Redux Study
+      </Link>
+      <Link
+        className={`${
+          reduxConnectMatched
+            ? `${styles.link} ${styles.active}`
+            : `${styles.link}`
+        }
+        `}
+        to="/reduxconnect"
+      >
+        Redux Connect Study
+      </Link>
+      <Link
+        className={`${
+          moviesMatched ? `${styles.link} ${styles.active}` : `${styles.link}`
+        }
+        `}
+        to="/movielist"
+      >
+        Movie List
       </Link>
     </div>
   );

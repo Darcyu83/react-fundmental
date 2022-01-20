@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { TodosContextProvider } from "../../contexts/B_TodosContext";
+import styled from 'styled-components';
+import { TodosContextProvider } from '../../contexts/B_TodosContext';
 
-import A_TodoForm from "./A_TodoForm";
-import A_TodoList from "./A_TodoList";
+import ATodoForm from './A_TodoForm';
+import ATodoList from './A_TodoList';
 
 const Div = styled.div`
   padding: 10px;
@@ -11,8 +11,8 @@ const Div = styled.div`
 function A_TodoHome() {
   return (
     <TodosContextProvider>
-      <A_TodoForm />
-      <A_TodoList />
+      <ATodoForm />
+      <ATodoList />
     </TodosContextProvider>
   );
 }

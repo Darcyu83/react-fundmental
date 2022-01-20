@@ -27,9 +27,6 @@ const FlexBoxCenter = styled.div`
   display: flex;
   align-items: center;
 `;
-const Test = styled.div`
-  display: flex;
-`;
 function Snippet() {
   return (
     <DivPadding10>

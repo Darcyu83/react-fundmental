@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import styled from "styled-components";
-import { A_T_Todo } from "../../contexts/A_TodosContext";
-import { TodosDispatchContext } from "../../contexts/B_TodosContext";
-import "./TodoItem.css";
+import { useContext } from 'react';
+import styled from 'styled-components';
+import { A_T_Todo } from '../../contexts/A_TodosContext';
+import { TodosDispatchContext } from '../../contexts/B_TodosContext';
+import './TodoItem.css';
 const Div = styled.div`
   padding: 10px;
 `;
@@ -14,12 +14,12 @@ function A_TodoItem({ todo }: T_TodoProps) {
 
   const onRemove = () => {
     if (!dispatch) return;
-    dispatch({ type: "REMOVE", id: todo.id });
+    dispatch({ type: 'DELETE', id: todo.id });
   };
 
   const onToggle = () => {
     if (!dispatch) return;
-    dispatch({ type: "TOGGLE", id: todo.id });
+    dispatch({ type: 'TOGGLE', id: todo.id });
   };
   return (
     <li onClick={onToggle} className={`TodoItem ${todo.done ? `done` : ``}`}>

@@ -20,7 +20,7 @@ export const decrease = () => {
 };
 //Reducer
 
-type T_Action =
+export type T_Action =
   | ReturnType<typeof increase>
   | ReturnType<typeof setDiff>
   | ReturnType<typeof decrease>;

@@ -1,52 +1,77 @@
 import { createContext, Dispatch, ReactNode, useReducer } from 'react';
 import produce from 'immer';
 
-//1. set state context
+const initialState: T_Todos = [
+  {
+    id: 1,
+    text: 'Context API 배우기',
+    done: true,
+  },
+  {
+    id: 2,
+    text: 'TypeScript 배우기',
+    done: true,
+  },
+  {
+    id: 3,
+    text: 'TypeScript 와 Context API 함께 사용하기',
+    done: false,
+  },
+];
 
-type T_B_Todo = {
+//1-1. set state context
+type T_Todo = {
   id: number;
   text: string;
   done: boolean;
 };
+type T_Todos = T_Todo[];
+type T_Action =
+  | ReturnType<typeof createTodo>
+  | ReturnType<typeof removeTodo>
+  | ReturnType<typeof updateTodo>
+  | ReturnType<typeof toggleTodo>;
 
-type T_B_Todos = T_B_Todo[];
+//1-2 create Context of state
+export const TodosStateContext = createContext<T_Todos | undefined>(undefined);
 
-export const TodosStateContext = createContext<T_B_Todos | undefined>(
-  undefined
-);
-
-//2. set dispatch context
+//2-1. set dispatch context
 //make dispatch actions
 //define actions
 const CREATE_TODO = 'CREATE' as const;
-const REMOVE_TODO = 'REMOVE' as const;
+const DELETE_TODO = 'DELETE' as const;
+const UPDATE_TODO = 'UPDATE' as const;
 const TOGGLE_TODO = 'TOGGLE' as const;
 
 //define action creators
 const createTodo = (text: string) => ({ type: CREATE_TODO, text });
-const removeTodo = (id: number) => ({ type: REMOVE_TODO, id });
+const removeTodo = (id: number) => ({ type: DELETE_TODO, id });
+const updateTodo = (id: number, text: string) => ({
+  type: UPDATE_TODO,
+  id,
+  text,
+});
 const toggleTodo = (id: number) => ({ type: TOGGLE_TODO, id });
 
-type T_B_Action =
-  | ReturnType<typeof createTodo>
-  | ReturnType<typeof removeTodo>
-  | ReturnType<typeof toggleTodo>;
+type TodosDispatch = Dispatch<T_Action>;
 
-type TodosDispatch = Dispatch<T_B_Action>;
+//2-2 create Context of dispatch
 export const TodosDispatchContext = createContext<TodosDispatch | undefined>(
   undefined
 );
 
 //Reducer
-function todosReducer(state: T_B_Todos, action: T_B_Action) {
+function todosReducer(state: T_Todos, action: T_Action) {
   switch (action.type) {
     case CREATE_TODO:
       const nextId = Math.max(...state.map((todo) => todo.id)) + 1;
       return [...state, { id: nextId, text: action.text, done: false }];
-
-    case REMOVE_TODO:
+    case DELETE_TODO:
       return state.filter((todo) => todo.id !== action.id);
-
+    case UPDATE_TODO:
+      return state.map((todo) =>
+        todo.id === action.id ? { ...todo, text: action.text } : todo
+      );
     case TOGGLE_TODO:
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, done: !todo.done } : todo
@@ -57,7 +82,7 @@ function todosReducer(state: T_B_Todos, action: T_B_Action) {
 }
 
 //Reducer
-function todosReducer_Immer(state: T_B_Todos, action: T_B_Action) {
+function todosReducer_Immer(state: T_Todos, action: T_Action) {
   switch (action.type) {
     case CREATE_TODO:
       const nextId = Math.max(0, ...state.map((todo) => todo.id)) + 1;
@@ -65,12 +90,18 @@ function todosReducer_Immer(state: T_B_Todos, action: T_B_Action) {
         draft.push({ id: nextId, text: action.text, done: false });
       });
 
-    case REMOVE_TODO:
+    case DELETE_TODO:
       return produce(state, (draft) => {
         const idx = draft.findIndex((todo) => todo.id === action.id);
         draft.splice(idx, 1);
       });
 
+    case UPDATE_TODO:
+      return produce(state, (draft) => {
+        draft.map((todo) =>
+          todo.id === action.id ? { ...todo, text: action.text } : todo
+        );
+      });
     case TOGGLE_TODO:
       return produce(state, (draft) => {
         const todo = draft.find((todo) => todo.id === action.id);
@@ -82,27 +113,9 @@ function todosReducer_Immer(state: T_B_Todos, action: T_B_Action) {
   }
 }
 
-// combine  context and useReducer and make a Context.Provider
-
+// combine context and useReducer and make a Context.Provider
 export function TodosContextProvider({ children }: { children: ReactNode }) {
-  const [todos, dispatch] = useReducer(todosReducer_Immer, [
-    {
-      id: 1,
-      text: 'Context API 배우기',
-      done: true,
-    },
-    {
-      id: 2,
-      text: 'TypeScript 배우기',
-      done: true,
-    },
-    {
-      id: 3,
-      text: 'TypeScript 와 Context API 함께 사용하기',
-      done: false,
-    },
-  ]);
-
+  const [todos, dispatch] = useReducer(todosReducer_Immer, initialState);
   return (
     <TodosDispatchContext.Provider value={dispatch}>
       <TodosStateContext.Provider value={todos}>
